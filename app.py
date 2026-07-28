@@ -8,7 +8,6 @@ from PIL import Image
 
 # --- Configuracion ---
 IMG_SIZE = (224, 224)
-MODEL_DIR = Path("modelo_piel_mobilenet")
 MODEL_PATH ="skin_disease_mobilenet.h5"
 CLASS_NAMES_PATH ="class_names.json"
 
@@ -47,14 +46,6 @@ def main():
         "Sube una foto de una lesión o afección de piel y el modelo "
         "(MobileNetV2 con transfer learning) mostrará las enfermedades más probables."
     )
-
-    if not MODEL_PATH.exists() or not CLASS_NAMES_PATH.exists():
-        st.error(
-            f"No se encontró el modelo en '{MODEL_DIR}/'. "
-            "Copia ahí los archivos 'skin_disease_mobilenet.h5' y 'class_names.json' "
-            "generados por el notebook de entrenamiento."
-        )
-        st.stop()
 
     modelo, class_names = cargar_modelo()
 
